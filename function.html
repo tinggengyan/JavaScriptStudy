@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Document</title>
+    <script>
+        function foo(name) {
+            return name.toUpperCase();
+        }
+
+        var name = foo("yan");
+        console.log("name: " + name);
+
+        function fooWithReturnUndefined() {
+            return  // <- 分号自动插在这里,括号被当作方法块了
+            { 
+                thisIsAn: 'object literal'
+            }
+        }
+        var undefinedExpectedValue = fooWithReturnUndefined();
+        console.log("undefinedExpectedValue: " + undefinedExpectedValue);
+
+
+        function fooWithReturnObject() {
+            return { // 括号被当作对象
+                thisIsAn: 'object literal'
+            }
+        }
+        var expectedObject = fooWithReturnObject();
+        console.log("expectedObject: " + expectedObject);
+
+    </script>
+</head>
+
+<body>
+    <h1>body</h1>
+</body>
+
+</html>

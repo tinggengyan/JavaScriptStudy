@@ -7,28 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> Document</title>
     <script>
-        
         var intValue = 1;
         console.log(intValue);
 
         var a = 0.1;
         var b = 0.2;
         // strange ?!
-        console.log(a+b);
+        console.log(a + b);
 
         var iA = 5;
         var iB = 2;
-        console.log(iA/iB);
+        console.log(iA / iB);
 
-        
-        console.log(1/0);
-        console.log(-1/0);
-        console.log(0/0);
-        console.log(1>0);
-        console.log(1<0);
 
-        console.log("1===1.0"+(1===1.0));
-        console.log("1===1"+(1===1));
+        console.log(1 / 0);
+        console.log(-1 / 0);
+        console.log(0 / 0);
+        console.log(1 > 0);
+        console.log(1 < 0);
+
+        console.log("1===1.0" + (1 === 1.0));
+        console.log("1===1" + (1 === 1));
 
 
 
@@ -36,13 +35,78 @@
         var strB = 'efgh';
         console.log(strA);
         console.log(strB);
-        console.log(strA+strB);
+        console.log(strA + strB);
+
+        if (iA != iB) {
+            console.log('iA != iB');
+        }
+
+        if (iA !== iB) {
+            console.log('iA !== iB');
+        }
 
 
+        var strPre = "front";
+        var and = " and "
+        var strEnd = "end";
+
+        console.log(strA + and + strEnd);
+
+        var charFive = "5";
+        console.log(charFive == 5);
+        console.log(charFive === 5);
+
+        console.log("null == undefined, " + (null == undefined));
+        console.log("null === undefined, " + (null === undefined));
 
 
+        var longStr = "Hello World";
+        console.log("NO.2: " + longStr.charAt(1));
+        console.log("sub str: " + longStr.substring(0, 5));
+        console.log("str length: " + longStr.length);
 
 
+        var undefinedStr;
+        console.log("undefinedStr: " + undefinedStr);
+
+        globalStr = "global";
+        console.log("globalStr 是全局的作用域,并没有语法错误: " + globalStr);
+
+
+        var myArray = ["str", 11, true];
+        myArray[0] = "modified"
+        myArray.push("pushedElement");
+        console.log("myArray length: " + myArray.length);
+        console.log("first element of array is: " + myArray[0]);
+        myArray.forEach(element => {
+            console.log("element of myArray: " + element);
+        });
+
+        var myMap = {
+            "key1": "value1",
+            "key2": 2
+        };
+        myMap["key3"] = 123.456;
+        myMap.key4 = false
+
+        console.log("first element of map: " + myMap["key1"]);
+        console.log("last element of map: " + myMap.key4);
+
+        grade = 'B';
+        switch (grade) {
+            case 'A':
+                console.log("Great job");
+                break;
+            case 'B':
+                console.log("OK job");
+                break;
+            case 'C':
+                console.log("You can do better");
+                break;
+            default:
+                console.log("Oy vey");
+                break;
+        }
     </script>
 </head>
 
