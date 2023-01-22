@@ -14,9 +14,10 @@
         var name = foo("yan");
         console.log("name: " + name);
 
+        // 原因是，js 可以没有分号结尾
         function fooWithReturnUndefined() {
-            return  // <- 分号自动插在这里,括号被当作方法块了
-            { 
+            return // <- 分号自动插在这里,括号被当作方法块了
+            {
                 thisIsAn: 'object literal'
             }
         }
@@ -31,6 +32,29 @@
         }
         var expectedObject = fooWithReturnObject();
         console.log("expectedObject: " + expectedObject);
+
+
+        // 无参的函数
+        function oneFunction() {
+            console.log("oneFunction called");
+        }
+        // 5s 后执行 oneFunction 
+        setTimeout(oneFunction, 5000);
+        setTimeout(function () {
+            console.log("匿名的函数");
+        }, 5000);
+
+        function sayHelloInFiveSeconds(name) {
+            var prompt = "Hello " + name;
+
+            function inner() {
+                // 可以访问 prompt
+                console.log(prompt);
+            }
+            // 异步函数，执行 inner 时，sayHelloInFiveSeconds 已经结束
+            setTimeout(inner, 3000);
+        }
+        sayHelloInFiveSeconds("steve");
 
     </script>
 </head>

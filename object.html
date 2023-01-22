@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Document</title>
+    <script>
+        var myObj = {
+            name: "steve",
+            age: 17,
+            objFunc: function () {
+                return "objFunc";
+            }
+        };
+        // 调用对象的方法
+        console.log(myObj.objFunc());
+
+
+        var otherFunc = function () {
+            return this.age;
+        }
+        //  为对象动态添加方法，可以在对象定义之后添加
+        myObj.otherFunc = otherFunc;
+        console.log(myObj.otherFunc());
+
+        var anotherFunc = function (s) {
+            return this.name + s;
+        }
+        // 可以调用方法的时候指定对象上下文
+        var result = anotherFunc.call(myObj, " Yan");
+        console.log(result);
+
+        // apply ,当一个函数接受一系列参数，而想传入一个 array 时特别有用
+        result = anotherFunc.apply(myObj, ['Yan']);
+        console.log(result);
+
+
+        var boundAnotherFunc = anotherFunc.bind(myObj);
+        result = boundAnotherFunc(" . Yan ");
+        console.log(result);
+
+
+
+    </script>
+</head>
+
+<body>
+    <h1>body</h1>
+</body>
+
+</html>
