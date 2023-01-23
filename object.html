@@ -42,6 +42,71 @@
         console.log(result);
 
 
+        var ObjectConstructor = function () {
+            this.number = 1;
+        }
+        var instance = new ObjectConstructor();
+        console.log("instance: " + instance.number);
+
+
+        var mySecondObj = {
+            myName: "Steve"
+        };
+        var myThirdObj = {
+            myName: "Yan"
+        };
+        var myPrototype = {
+            station: "China",
+            myNameFunc: function () {
+                return this.myName + " from myNameFunc";
+            }
+        };
+        mySecondObj.__proto__ = myPrototype;
+        myThirdObj.__proto__ = myPrototype;
+
+        console.log(mySecondObj.station);
+        console.log(myThirdObj.station);
+
+        console.log(mySecondObj.myNameFunc());
+
+        myPrototype.station = "china";
+        console.log(mySecondObj.station);
+        console.log(myThirdObj.station);
+
+        // 第一种方式
+        var myForthObj = Object.create(myPrototype);
+        console.log(myForthObj.station);
+        console.log(myForthObj.myNameFunc());
+
+        // 第二种方式，通过构造函数,属性 prototype。不是构造函数本身的原型,是通过构造函数和 new 关键字创建的新对象的原型
+        ObjectConstructor.prototype = {
+            obNum: 1,
+            obFunc: function () {
+                console.log("obFunc called");
+            }
+        };
+        var obInstance = new ObjectConstructor();
+        console.log(obInstance.obNum);
+        obInstance.obFunc();
+
+        // 包装类型和内置类型共享一个原型
+        var pNum = 12;
+        var oNum = new Number(12);
+        console.log(pNum == oNum);
+        console.log(pNum === oNum);
+
+        console.log(typeof pNum);
+        console.log(typeof oNum);
+
+        // 这个技巧经常用在“代码填充”中，来为老版本的javascript子集增加新版本js的特性，
+        // 这样就可以在老的浏览器中使用新功能了。
+        String.prototype.firstCharacter = function () {
+            return this.charAt(0);
+        };
+        
+        console.log("abc".firstCharacter());
+
+    
 
     </script>
 </head>
